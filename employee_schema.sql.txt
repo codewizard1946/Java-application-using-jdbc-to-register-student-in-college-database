@@ -1,0 +1,28 @@
+-- Employee CSV Exporter: database setup for MySQL
+-- Run this script in MySQL Workbench or a MySQL command-line client.
+
+CREATE DATABASE IF NOT EXISTS employee_db;
+USE employee_db;
+
+CREATE TABLE IF NOT EXISTS employees (
+    employee_id INT PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    department VARCHAR(80) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    salary DECIMAL(10, 2) NOT NULL
+);
+
+-- Insert example records. INSERT IGNORE skips rows that conflict with an existing
+-- employee ID or email, so re-running this script does not add duplicates.
+INSERT IGNORE INTO employees (employee_id, full_name, department, email, salary)
+VALUES
+    (1, 'Aarav Sharma', 'Engineering', 'aarav.sharma@example.com', 65000.00),
+    (2, 'Meera Patel', 'Human Resources', 'meera.patel@example.com', 52000.00),
+    (3, 'Kabir Verma', 'Finance', 'kabir.verma@example.com', 58000.00),
+    (4, 'Ananya Rao', 'Marketing', 'ananya.rao@example.com', 49000.00),
+    (5, 'Ishaan Gupta', 'Engineering', 'ishaan.gupta@example.com', 70000.00);
+
+-- Verify the sample data (optional).
+SELECT employee_id, full_name, department, email, salary
+FROM employees
+ORDER BY employee_id;

@@ -1,0 +1,23 @@
+# Compiled Java files
+*.class
+
+# Generated CSV output and logs
+employees.csv
+*.log
+
+# Local database credentials / environment files
+.env
+.env.*
+!.env.example
+
+# IDE settings
+.vscode/
+.idea/
+
+# Build output
+out/
+target/
+
+# Local JDBC driver libraries (do not commit downloaded JARs)
+lib/
+*.jar
